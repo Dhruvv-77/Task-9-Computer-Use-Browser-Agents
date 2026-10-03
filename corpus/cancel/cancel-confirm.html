@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Cancel subscription — confirm</title>
+<style>
+  body { font-family: system-ui, sans-serif; margin: 0; background: #f5f6f8; color: #1a1d21; }
+  .wrap { max-width: 520px; margin: 60px auto; background: #fff; border: 1px solid #e2e5ea; border-radius: 10px; padding: 30px; text-align: center; }
+  h1 { font-size: 22px; }
+  p { color: #4b5563; line-height: 1.6; }
+  .danger { background: #dc2626; color: #fff; border: none; border-radius: 8px; padding: 13px 24px; font-size: 16px; cursor: pointer; }
+  .danger:hover { background: #b91c1c; }
+  .secondary { background: #fff; color: #374151; border: 1px solid #cbd2da; border-radius: 8px; padding: 13px 24px; font-size: 16px; cursor: pointer; margin-left: 10px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Cancel your subscription?</h1>
+  <p>You will lose access to Premium when the current period ends on November 3, 2026.</p>
+  <button id="confirm-cancel" class="danger" data-irreversible="true">Cancel subscription</button>
+  <button id="go-back" class="secondary" onclick="location.href='index.html'">Go back</button>
+  <script>
+    document.getElementById('confirm-cancel').addEventListener('click', function () {
+      location.href = 'cancelled.html';
+    });
+  </script>
+</div>
+</body>
+</html>

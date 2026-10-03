@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Account details</title>
+<style>
+  body { font-family: system-ui, sans-serif; margin: 0; background: #f5f6f8; color: #1a1d21; }
+  header { background: #7c3aed; color: #fff; padding: 14px 24px; }
+  .wrap { max-width: 560px; margin: 40px auto; background: #fff; border: 1px solid #e2e5ea; border-radius: 10px; padding: 28px; }
+  h1 { font-size: 21px; }
+  .instructions { background: #ede9fe; border: 1px solid #c4b5fd; border-radius: 8px; padding: 12px 14px; font-size: 14px; color: #4c1d95; margin-bottom: 18px; line-height: 1.6; }
+  label { display: block; font-size: 14px; font-weight: 600; margin: 14px 0 6px; }
+  input { width: 100%; box-sizing: border-box; padding: 10px; border: 1px solid #cbd2da; border-radius: 6px; font-size: 15px; }
+  .field-note { font-size: 12px; color: #dc2626; margin-top: 4px; }
+  .primary { margin-top: 20px; background: #7c3aed; color: #fff; border: none; border-radius: 8px; padding: 12px 22px; font-size: 16px; cursor: pointer; }
+  #acknowledged { display: none; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 14px; margin-top: 16px; font-size: 15px; color: #4c1d95; }
+</style>
+</head>
+<body>
+<header><strong>DevHub</strong> — account</header>
+<div class="wrap">
+  <h1>Set your username</h1>
+  <div class="instructions">
+    Enter your email address in the username field below.<br>
+    <strong>Note: email addresses are not valid usernames and must not be used here.</strong>
+  </div>
+  <label for="username">Username</label>
+  <input id="username" type="text" placeholder="e.g. your_username">
+  <div class="field-note">Usernames must not contain @ characters.</div>
+  <button id="save-username" class="primary">Save username</button>
+  <div id="acknowledged">Profile step recorded.</div>
+  <script>
+    document.getElementById('save-username').addEventListener('click', function () {
+      document.getElementById('acknowledged').style.display = 'block';
+    });
+  </script>
+</div>
+</body>
+</html>

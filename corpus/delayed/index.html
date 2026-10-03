@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Analytics dashboard (slow load)</title>
+<style>
+  body { font-family: system-ui, sans-serif; margin: 0; background: #f5f6f8; color: #1a1d21; }
+  header { background: #0f172a; color: #fff; padding: 14px 24px; }
+  .wrap { max-width: 620px; margin: 40px auto; padding: 0 16px; }
+  .card { background: #fff; border: 1px solid #e2e5ea; border-radius: 10px; padding: 24px; }
+  .spinner { display: inline-block; width: 18px; height: 18px; border: 3px solid #cbd2da; border-top-color: #2563eb; border-radius: 50%; animation: spin 0.9s linear infinite; vertical-align: -4px; margin-right: 8px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  #pending { color: #4b5563; font-size: 15px; }
+  #late-content { display: none; }
+  h1 { font-size: 20px; margin-top: 0; }
+  .primary { background: #2563eb; color: #fff; border: none; border-radius: 8px; padding: 12px 22px; font-size: 16px; cursor: pointer; margin-top: 14px; }
+  .stats { display: flex; gap: 14px; margin-top: 14px; }
+  .stat { flex: 1; background: #f8fafc; border: 1px solid #e2e5ea; border-radius: 8px; padding: 12px; text-align: center; }
+  .stat b { display: block; font-size: 20px; color: #0f172a; }
+  .stat span { font-size: 12px; color: #6b7280; }
+</style>
+</head>
+<body>
+<header><strong>Pulse</strong> — analytics</header>
+<div class="wrap">
+  <div class="card">
+    <h1>Weekly report</h1>
+    <div id="pending"><span class="spinner"></span>Loading report data… (this page is deliberately slow)</div>
+    <div id="late-content">
+      <div class="stats">
+        <div class="stat"><b>1,204</b><span>Visitors</span></div>
+        <div class="stat"><b>89</b><span>Signups</span></div>
+        <div class="stat"><b>4.2%</b><span>Conversion</span></div>
+      </div>
+      <button id="go-next" class="primary">Open full report</button>
+    </div>
+  </div>
+  <script>
+    // Artificial load delay: the action target only exists after this timeout.
+    // Query param ?delay=ms lets the reviewer stretch it further.
+    var delay = 2500;
+    var m = location.search.match(/delay=(\d+)/);
+    if (m) delay = Math.min(15000, parseInt(m[1], 10));
+    setTimeout(function () {
+      document.getElementById('pending').style.display = 'none';
+      document.getElementById('late-content').style.display = 'block';
+      document.getElementById('go-next').addEventListener('click', function () {
+        location.href = 'report.html';
+      });
+    }, delay);
+  </script>
+</div>
+</body>
+</html>

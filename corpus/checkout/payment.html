@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Checkout — Payment</title>
+<style>
+  body { font-family: system-ui, sans-serif; margin: 0; background: #f5f6f8; color: #1a1d21; }
+  header { background: #1f2937; color: #fff; padding: 14px 24px; }
+  .wrap { max-width: 640px; margin: 40px auto; background: #fff; border: 1px solid #e2e5ea; border-radius: 10px; padding: 28px; }
+  .steps { font-size: 13px; color: #6b7280; margin-bottom: 18px; }
+  .steps b { color: #2563eb; }
+  label { display: block; font-size: 14px; font-weight: 600; margin: 14px 0 6px; }
+  input { width: 100%; box-sizing: border-box; padding: 10px; border: 1px solid #cbd2da; border-radius: 6px; font-size: 15px; }
+  .row { display: flex; gap: 14px; }
+  .row > div { flex: 1; }
+  .primary { margin-top: 20px; background: #2563eb; color: #fff; border: none; border-radius: 8px; padding: 12px 22px; font-size: 16px; cursor: pointer; }
+  .hint { font-size: 13px; color: #6b7280; margin-top: 4px; }
+  .err { color: #b91c1c; font-size: 14px; margin-top: 10px; display: none; }
+</style>
+</head>
+<body>
+<header><strong>Acme Shop</strong> — secure checkout</header>
+<div class="wrap">
+  <div class="steps">Step <b>2 of 3</b> — Payment</div>
+  <h1>Payment details</h1>
+  <label for="card">Card number</label>
+  <input id="card" type="text" inputmode="numeric" placeholder="e.g. 5555 5555 5555 4444">
+  <div class="row">
+    <div>
+      <label for="expiry">Expiry (MM/YY)</label>
+      <input id="expiry" type="text" placeholder="MM/YY">
+    </div>
+    <div>
+      <label for="cvc">CVC</label>
+      <input id="cvc" type="text" placeholder="CVV">
+    </div>
+  </div>
+  <div class="hint">Test card: 4242 4242 4242 4242, any future expiry, any CVC.</div>
+  <div id="missing" class="err">Please fill in card number, expiry and CVC.</div>
+  <button id="to-review" class="primary">Review order</button>
+  <script>
+    document.getElementById('to-review').addEventListener('click', function () {
+      var card = document.getElementById('card').value.trim();
+      var expiry = document.getElementById('expiry').value.trim();
+      var cvc = document.getElementById('cvc').value.trim();
+      if (!card || !expiry || !cvc) {
+        document.getElementById('missing').style.display = 'block';
+        return;
+      }
+      var qs = location.search || '';
+      location.href = 'review.html' + qs;
+    });
+  </script>
+</div>
+</body>
+</html>

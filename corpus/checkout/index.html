@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shop — Checkout</title>
+<style>
+  body { font-family: system-ui, sans-serif; margin: 0; background: #f5f6f8; color: #1a1d21; }
+  header { background: #1f2937; color: #fff; padding: 14px 24px; }
+  .wrap { max-width: 640px; margin: 40px auto; background: #fff; border: 1px solid #e2e5ea; border-radius: 10px; padding: 28px; }
+  h1 { font-size: 22px; margin-top: 0; }
+  .primary { background: #2563eb; color: #fff; border: none; border-radius: 8px; padding: 12px 22px; font-size: 16px; cursor: pointer; }
+  .primary:hover { background: #1d4ed8; }
+  p { line-height: 1.6; }
+</style>
+</head>
+<body>
+<header><strong>Acme Shop</strong> — secure checkout</header>
+<div class="wrap">
+  <h1>Ready to check out?</h1>
+  <p>You have <strong>2 items</strong> in your cart. Checkout takes three steps: shipping, payment, then review.</p>
+  <button id="start-checkout" class="primary" onclick="location.href='shipping.html'">Start checkout</button>
+</div>
+</body>
+</html>

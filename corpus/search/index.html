@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fruitpedia — search</title>
+<style>
+  body { font-family: system-ui, sans-serif; margin: 0; background: #f5f6f8; color: #1a1d21; }
+  header { background: #14532d; color: #fff; padding: 14px 24px; }
+  .wrap { max-width: 620px; margin: 40px auto; padding: 0 16px; }
+  .searchbar { display: flex; gap: 10px; }
+  input { flex: 1; padding: 12px; border: 1px solid #cbd2da; border-radius: 8px; font-size: 16px; box-sizing: border-box; }
+  button { background: #16a34a; color: #fff; border: none; border-radius: 8px; padding: 12px 20px; font-size: 16px; cursor: pointer; }
+  #status { margin-top: 16px; color: #6b7280; font-size: 14px; min-height: 18px; }
+  .results { margin-top: 8px; }
+  .result { background: #fff; border: 1px solid #e2e5ea; border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; cursor: pointer; }
+  .result:hover { border-color: #16a34a; }
+  .result h3 { margin: 0 0 4px; font-size: 16px; color: #14532d; }
+  .result p { margin: 0; font-size: 14px; color: #6b7280; }
+  #detail { display: none; background: #fff; border: 1px solid #16a34a; border-radius: 8px; padding: 18px; margin-top: 14px; }
+  #detail h2 { margin-top: 0; font-size: 18px; color: #14532d; }
+</style>
+</head>
+<body>
+<header><strong>Fruitpedia</strong> — the fruit encyclopedia</header>
+<div class="wrap">
+  <h1>Search the encyclopedia</h1>
+  <div class="searchbar">
+    <input id="q" type="text" placeholder="Search fruits... try 'apples'">
+    <button id="search-btn">Search</button>
+  </div>
+  <div id="status"></div>
+  <div id="results" class="results"></div>
+  <div id="detail">
+    <h2 id="detail-title"></h2>
+    <p id="detail-body"></p>
+  </div>
+  <script>
+    var DATA = [
+      { id: 'apples-guide', title: 'Apples: A Complete Guide', body: 'Apples grow in temperate climates. Varieties include Fuji, Gala, Granny Smith and Honeycrisp. Harvest is in autumn.' },
+      { id: 'bananas', title: 'Bananas', body: 'Bananas are berries harvested green and ripened off the plant.' },
+      { id: 'cherries', title: 'Cherries', body: 'Cherries belong to the Prunus genus and ripen in early summer.' }
+    ];
+    document.getElementById('search-btn').addEventListener('click', function () {
+      var q = document.getElementById('q').value.trim().toLowerCase();
+      var box = document.getElementById('results');
+      box.innerHTML = '';
+      document.getElementById('detail').style.display = 'none';
+      document.getElementById('status').textContent = 'Searching...';
+      setTimeout(function () {
+        var hits = DATA.filter(function (d) { return d.title.toLowerCase().indexOf(q) >= 0 || d.body.toLowerCase().indexOf(q) >= 0; });
+        document.getElementById('status').textContent = hits.length + ' result(s) for "' + q + '"';
+        hits.forEach(function (d) {
+          var el = document.createElement('div');
+          el.className = 'result';
+          el.id = 'result-' + d.id;
+          el.setAttribute('role', 'button');
+          el.setAttribute('tabindex', '0');
+          el.innerHTML = '<h3>' + d.title + '</h3><p>' + d.body.slice(0, 80) + '...</p>';
+          el.addEventListener('click', function () {
+            document.getElementById('detail-title').textContent = d.title;
+            document.getElementById('detail-body').textContent = d.body;
+            document.getElementById('detail').style.display = 'block';
+            document.getElementById('detail').scrollIntoView({ behavior: 'smooth' });
+          });
+          box.appendChild(el);
+        });
+      }, 400);
+    });
+  </script>
+</div>
+</body>
+</html>

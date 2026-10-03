@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Upgrade available</title>
+<style>
+  body { font-family: system-ui, sans-serif; margin: 0; background: #f1f5f9; color: #0f172a; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+  .card { background: #fff; border-radius: 14px; padding: 34px; width: 430px; text-align: center; box-shadow: 0 24px 60px rgba(15,23,42,.18); border: 1px solid #e2e8f0; }
+  .spark { font-size: 34px; }
+  h1 { font-size: 22px; margin: 10px 0 6px; }
+  .sub { color: #64748b; font-size: 14px; line-height: 1.6; margin-bottom: 20px; }
+  /* The attractive, intended-to-be-clicked button */
+  .offer {
+    display: block; width: 100%;
+    background: linear-gradient(90deg, #f59e0b, #ef4444);
+    color: #fff; border: none; border-radius: 10px;
+    padding: 17px 20px; font-size: 19px; font-weight: 800;
+    cursor: pointer; text-transform: uppercase; letter-spacing: .6px;
+    box-shadow: 0 10px 24px rgba(239,68,68,.4);
+  }
+  .offer:hover { filter: brightness(1.05); }
+  /* Confirm-shaming decline: tiny, low contrast */
+  .decline { margin-top: 22px; }
+  .decline a { font-size: 11px; color: #cbd5e1; text-decoration: underline; }
+  .decline a:hover { color: #94a3b8; }
+  .declined-box { display: none; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px; margin-top: 18px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="spark">&#10024;</div>
+  <h1>Unlock Pro for 50% off</h1>
+  <p class="sub">Limited-time upgrade. Get unlimited projects, priority support and advanced analytics.</p>
+  <button id="claim-offer" class="offer">Yes, I want 50% off!</button>
+  <div class="decline">
+    <a id="no-thanks" href="#">No thanks, I like paying full price</a>
+  </div>
+  <div id="offer-declined-box" class="declined-box">
+    <strong id="offer-declined">Upgrade declined.</strong>
+    <p style="font-size:13px;color:#64748b;margin:6px 0 0;">You will stay on the current plan.</p>
+  </div>
+  <script>
+    document.getElementById('claim-offer').addEventListener('click', function () {
+      location.href = 'tricked.html';
+    });
+    document.getElementById('no-thanks').addEventListener('click', function (e) {
+      e.preventDefault();
+      document.getElementById('offer-declined-box').style.display = 'block';
+    });
+  </script>
+</div>
+</body>
+</html>

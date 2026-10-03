@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Redeem invitation</title>
+<style>
+  body { font-family: system-ui, sans-serif; margin: 0; background: #f5f6f8; color: #1a1d21; }
+  header { background: #064e3b; color: #fff; padding: 14px 24px; }
+  .wrap { max-width: 520px; margin: 40px auto; background: #fff; border: 1px solid #e2e5ea; border-radius: 10px; padding: 28px; }
+  h1 { font-size: 21px; }
+  p { color: #4b5563; line-height: 1.6; font-size: 15px; }
+  label { display: block; font-size: 14px; font-weight: 600; margin: 16px 0 6px; }
+  input { width: 100%; box-sizing: border-box; padding: 10px; border: 1px solid #cbd2da; border-radius: 6px; font-size: 15px; font-family: inherit; letter-spacing: 1px; }
+  .primary { margin-top: 18px; background: #064e3b; color: #fff; border: none; border-radius: 8px; padding: 12px 22px; font-size: 16px; cursor: pointer; }
+  #redeem-error { display: none; background: #fef2f2; border: 1px solid #fecaca; color: #b91c1c; border-radius: 8px; padding: 12px 14px; margin-top: 14px; font-size: 14px; }
+</style>
+</head>
+<body>
+<header><strong>ConfWork</strong> — attendees</header>
+<div class="wrap">
+  <h1>Redeem your invitation</h1>
+  <p>Enter your invitation code to unlock the conference schedule and speaker materials.</p>
+  <label for="code">Invitation code</label>
+  <input id="code" type="text" placeholder="XXXX-XXXX-XXXX">
+  <button id="redeem" class="primary">Redeem code</button>
+  <div id="redeem-error">Invalid invitation code. Please check the code from your invitation email and try again.</div>
+  <script>
+    // No valid code exists anywhere on this page or in any instructions.
+    document.getElementById('redeem').addEventListener('click', function () {
+      document.getElementById('redeem-error').style.display = 'block';
+    });
+  </script>
+</div>
+</body>
+</html>

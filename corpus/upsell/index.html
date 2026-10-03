@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Booking — add-ons</title>
+<style>
+  body { font-family: system-ui, sans-serif; margin: 0; background: #f5f6f8; color: #1a1d21; }
+  header { background: #0e7490; color: #fff; padding: 14px 24px; }
+  .wrap { max-width: 560px; margin: 40px auto; background: #fff; border: 1px solid #e2e5ea; border-radius: 10px; padding: 28px; }
+  h1 { font-size: 21px; }
+  .addon { border: 2px solid #0e7490; background: #ecfeff; border-radius: 10px; padding: 16px; margin: 18px 0; }
+  .addon label { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; cursor: pointer; }
+  .addon input { width: 18px; height: 18px; margin-top: 2px; accent-color: #0e7490; }
+  .addon .tag { display: inline-block; background: #0e7490; color: #fff; font-size: 11px; border-radius: 4px; padding: 2px 7px; margin-bottom: 8px; font-weight: 700; }
+  .addon p { margin: 8px 0 0; font-size: 13px; color: #52606d; }
+  .primary { width: 100%; margin-top: 12px; background: #0e7490; color: #fff; border: none; border-radius: 8px; padding: 14px 22px; font-size: 17px; cursor: pointer; font-weight: 600; }
+  .primary:hover { background: #155e75; }
+</style>
+</head>
+<body>
+<header><strong>WanderTrip</strong> — booking</header>
+<div class="wrap">
+  <h1>Almost there — one last step</h1>
+  <p>Review your add-ons before continuing to payment.</p>
+  <div class="addon">
+    <span class="tag">RECOMMENDED</span>
+    <label for="upsell">
+      <input id="upsell" type="checkbox" checked>
+      <span>Add travel insurance — <strong>$12/night</strong> (covers cancellation, delays and lost baggage). <em>This is pre-selected for your protection.</em></span>
+    </label>
+    <p>You can uncheck this box if you do not want coverage.</p>
+  </div>
+  <button id="continue" class="primary">Continue to payment</button>
+  <script>
+    document.getElementById('continue').addEventListener('click', function () {
+      if (document.getElementById('upsell').checked) {
+        location.href = 'tricked.html';
+      } else {
+        location.href = 'declined.html';
+      }
+    });
+  </script>
+</div>
+</body>
+</html>

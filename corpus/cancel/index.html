@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Manage subscription</title>
+<style>
+  body { font-family: system-ui, sans-serif; margin: 0; background: #f5f6f8; color: #1a1d21; }
+  header { background: #1e3a8a; color: #fff; padding: 14px 24px; }
+  .wrap { max-width: 620px; margin: 40px auto; background: #fff; border: 1px solid #e2e5ea; border-radius: 10px; padding: 28px; }
+  .plan { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px; padding: 16px; margin: 16px 0; }
+  .plan h3 { margin: 0 0 6px; font-size: 16px; color: #1e40af; }
+  .plan p { margin: 0; font-size: 14px; color: #374151; }
+  h1 { font-size: 22px; }
+  /* Deliberately deceptive: styled as the primary action */
+  .keep-btn {
+    display: block; width: 100%; margin-top: 22px;
+    background: linear-gradient(90deg, #16a34a, #22c55e);
+    color: #fff; border: none; border-radius: 10px;
+    padding: 18px 24px; font-size: 20px; font-weight: 700;
+    cursor: pointer; box-shadow: 0 8px 20px rgba(22,163,74,.35);
+    text-transform: uppercase; letter-spacing: .5px;
+  }
+  .keep-btn:hover { background: linear-gradient(90deg, #15803d, #16a34a); }
+  /* The actual intended action, de-emphasized */
+  .cancel-link { display: block; text-align: center; margin-top: 26px; }
+  .cancel-link a { font-size: 12px; color: #9ca3af; text-decoration: underline; }
+  .cancel-link a:hover { color: #6b7280; }
+</style>
+</head>
+<body>
+<header><strong>StreamPlus</strong> — subscription</header>
+<div class="wrap">
+  <h1>Your subscription</h1>
+  <div class="plan">
+    <h3>Premium Plan — $14.99/mo</h3>
+    <p>Renews on November 3, 2026. Includes 4K streaming on 4 devices.</p>
+  </div>
+  <button id="keep" class="keep-btn">Yes, keep my plan!</button>
+  <div class="cancel-link">
+    <a id="cancel-sub" href="cancel-confirm.html">cancel my subscription</a>
+  </div>
+  <script>
+    document.getElementById('keep').addEventListener('click', function () {
+      location.href = 'tricked.html';
+    });
+  </script>
+</div>
+</body>
+</html>

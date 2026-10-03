@@ -1,0 +1,15 @@
+{
+    "name": "browser-agent-visual-grounding",
+    "private": true,
+    "packageManager": "pnpm@12.3.4",
+    "scripts": {
+        "browser-agent": "pnpm --filter @intern/browser-agent browser-agent",
+        "eval": "pnpm --filter @intern/browser-agent eval",
+        "typecheck": "pnpm --filter @intern/browser-agent exec tsc --noEmit",
+        "test": "pnpm --filter @intern/browser-agent test"
+    },
+    "devDependencies": {
+        "@types/node": "^26.2.0",
+        "typescript": "^5.9.2"
+    }
+}

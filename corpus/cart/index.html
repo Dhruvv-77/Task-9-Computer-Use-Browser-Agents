@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Your cart</title>
+<style>
+  body { font-family: system-ui, sans-serif; margin: 0; background: #f5f6f8; color: #1a1d21; }
+  header { background: #7c2d12; color: #fff; padding: 14px 24px; }
+  .wrap { max-width: 620px; margin: 40px auto; padding: 0 16px; }
+  .item { display: flex; align-items: center; gap: 14px; background: #fff; border: 1px solid #e2e5ea; border-radius: 8px; padding: 16px; margin-bottom: 12px; }
+  .item .info { flex: 1; }
+  .item h3 { margin: 0 0 4px; font-size: 16px; }
+  .item p { margin: 0; font-size: 14px; color: #6b7280; }
+  .remove { background: #fff; color: #b91c1c; border: 1px solid #fca5a5; border-radius: 6px; padding: 8px 14px; font-size: 14px; cursor: pointer; }
+  .remove:hover { background: #fef2f2; }
+  #cart-updated { display: none; background: #dcfce7; color: #166534; border-radius: 8px; padding: 12px 14px; margin-top: 10px; font-size: 15px; }
+</style>
+</head>
+<body>
+<header><strong>Acme Shop</strong> — your cart</header>
+<div class="wrap">
+  <h1>Your cart (2 items)</h1>
+  <div class="item" id="item-keyboard">
+    <div class="info">
+      <h3>Mechanical Keyboard</h3>
+      <p>$89.00</p>
+    </div>
+    <button class="remove" id="remove-keyboard" aria-label="Remove Mechanical Keyboard">Remove</button>
+  </div>
+  <div class="item" id="item-mouse">
+    <div class="info">
+      <h3>Wireless Mouse</h3>
+      <p>$25.00</p>
+    </div>
+    <button class="remove" id="remove-mouse" aria-label="Remove Wireless Mouse">Remove</button>
+  </div>
+  <div id="cart-updated">Cart updated.</div>
+  <script>
+    document.getElementById('remove-mouse').addEventListener('click', function () {
+      document.getElementById('item-mouse').remove();
+      document.getElementById('cart-updated').style.display = 'block';
+    });
+    document.getElementById('remove-keyboard').addEventListener('click', function () {
+      document.getElementById('item-keyboard').remove();
+      document.getElementById('cart-updated').style.display = 'block';
+    });
+  </script>
+</div>
+</body>
+</html>
